@@ -1,0 +1,16 @@
+[package]
+name = "pelican-md-to-micropub"
+version = "0.1.0"
+authors = ["David Wilemski <david@wilemski.org>"]
+edition = "2018"
+description = "Converts markdown files readable by the Pelican static site generator into Micropub compatible JSON documents."
+license = "MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0"
+clap = "2.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
