@@ -75,7 +75,7 @@ impl PostBuilder {
             .ok_or(PostError::MissingField("Date".into()))?;
         let categories = self
             .categories
-            .ok_or(PostError::MissingField("Tags".into()))?;
+            .unwrap_or_default();
 
         Ok(Post {
             post_type: vec!["h-entry".into()],
