@@ -12,7 +12,7 @@ use thiserror::Error;
 
 #[derive(Debug, Deserialize, Serialize)]
 struct PostContent {
-    html: String,
+    markdown: String,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -82,7 +82,7 @@ impl PostBuilder {
             properties: PostProperties {
                 name: vec![name],
                 slug: vec![slug],
-                content: vec![PostContent { html: content }],
+                content: vec![PostContent { markdown: content }],
                 published: vec![published],
                 category: categories,
                 extra: HashMap::new(),
@@ -174,7 +174,6 @@ fn main() -> anyhow::Result<()> {
     let mut content = String::new();
     // We don't super care if the post doesn't have content (although it should)
     let _ = reader.read_to_string(&mut content)?;
-    // TODO convert markdown content into html content desired by micropub format
     builder.set_content(content);
 
     let post = builder.build()?;
