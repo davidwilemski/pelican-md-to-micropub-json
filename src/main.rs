@@ -75,7 +75,10 @@ impl PostBuilder {
             .ok_or(PostError::MissingField("Date".into()))?;
         let categories = self
             .categories
-            .unwrap_or_default();
+            .unwrap_or_default()
+            .iter()
+            .map(|s| s.to_lowercase())
+            .collect();
 
         Ok(Post {
             post_type: vec!["h-entry".into()],
