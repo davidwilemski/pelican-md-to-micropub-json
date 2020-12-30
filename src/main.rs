@@ -35,7 +35,7 @@ struct PostProperties {
 #[derive(Debug, Deserialize, Serialize)]
 struct Post {
     #[serde(rename = "type")]
-    post_type: String,
+    post_type: Vec<String>,
     properties: PostProperties,
 }
 
@@ -78,7 +78,7 @@ impl PostBuilder {
             .ok_or(PostError::MissingField("Tags".into()))?;
 
         Ok(Post {
-            post_type: "h-entry".into(),
+            post_type: vec!["h-entry".into()],
             properties: PostProperties {
                 name: vec![name],
                 slug: vec![slug],
